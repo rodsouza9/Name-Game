@@ -22,7 +22,6 @@ public class NameGame {
         return -1;
     }
 
-
     static boolean isVowel (String c) {
         for (String i: vowels) {
             if (c.equals(i))
@@ -33,12 +32,15 @@ public class NameGame {
 
     static String getLongName (String name) {
         String[] lets = name.toLowerCase().split("");
+        String sndVowl = getSecondVowel(lets);
+        int index = getSecondVowelIndex(lets);
+
         if (isVowel(lets[0])) {
-            String sndVowl = getSecondVowel(lets);
-            int index = getSecondVowelIndex(lets);
             return name.substring(0,index) + sndVowl + sndVowl + sndVowl + name.substring(index+1);
         }
-        return name.substring(0,1) + name.substring(0,1) + name.substring(0,1) + name.substring(1);
+        else {
+            return name.substring(0,index) + sndVowl + sndVowl + sndVowl + name.substring(index+1);
+        }
     }
     static String nameToGame(String name) {
         String x = name;
